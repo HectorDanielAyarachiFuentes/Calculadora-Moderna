@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-
-
 <body>
-<!DOCTYPE html>
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Moderna</title>
     <link rel="stylesheet" href="./style.css">
-
-   
-</head>
-<body>
+  </head>
+  <body>
     <div id="calculator">
-        <h2>Calculadora Moderna</h2>
-        <input type="text" name="display" id="display" readonly placeholder="Pon un número">
-       <br>
-<input type="button" value="1" onclick="addToDisplay('1')">
-<input type="button" value="2" onclick="addToDisplay('2')">
-<input type="button" value="3" onclick="addToDisplay('3')">
-<input type="button" class="operator" value="*" onclick="addToDisplay('*')">
-<br>
-<input type="button" value="4" onclick="addToDisplay('4')">
-<input type="button" value="5" onclick="addToDisplay('5')">
-<input type="button" value="6" onclick="addToDisplay('6')">
-<input type="button" class="operator" value="-" onclick="addToDisplay('-')">
-<br>
-<input type="button" value="7" onclick="addToDisplay('7')">
-<input type="button" value="8" onclick="addToDisplay('8')">
-<input type="button" value="9" onclick="addToDisplay('9')">
-
-<input type="button" class="operator" value="+" onclick="addToDisplay('+')">
-<br>
-<input type="button" value="0" onclick="addToDisplay('0')">
-<input type="button" value="." onclick="addToDisplay('.')">
-<input type="button" class="operator" value="/" onclick="addToDisplay('/')">
-
-<input type="button" class="operator calculate-animation" value="=" onclick="calculate()">
-<input type="button" class="operator" id="clearButton" value="C" onclick="clearDisplay()">
-
-<div>
+      <h2>Calculadora Moderna</h2>
+      <input type="text" name="display" id="display" readonly placeholder="Pon un número">
+      <br>
+      <input type="button" value="1" onclick="addToDisplay('1')">
+      <input type="button" value="2" onclick="addToDisplay('2')">
+      <input type="button" value="3" onclick="addToDisplay('3')">
+      <input type="button" class="operator" value="*" onclick="addToDisplay('*')">
+      <br>
+      <input type="button" value="4" onclick="addToDisplay('4')">
+      <input type="button" value="5" onclick="addToDisplay('5')">
+      <input type="button" value="6" onclick="addToDisplay('6')">
+      <input type="button" class="operator" value="-" onclick="addToDisplay('-')">
+      <br>
+      <input type="button" value="7" onclick="addToDisplay('7')">
+      <input type="button" value="8" onclick="addToDisplay('8')">
+      <input type="button" value="9" onclick="addToDisplay('9')">
+      <input type="button" class="operator" value="+" onclick="addToDisplay('+')">
+      <br>
+      <input type="button" value="0" onclick="addToDisplay('0')">
+      <input type="button" value="." onclick="addToDisplay('.')">
+      <input type="button" class="operator" value="/" onclick="addToDisplay('/')">
+      <input type="button" class="operator calculate-animation" value="=" onclick="calculate()">
+      <input type="button" class="operator" id="clearButton" value="C" onclick="clearDisplay()">
+      <div>
         <button onclick="goBack()">Atrás</button>
         <button onclick="goForward()">Adelante</button>
-          <button onclick="clearHistoryButton()">Borrar Historial</button>
-
-    </div>
-    <div id="history">
+        <button onclick="clearHistoryButton()">Borrar Historial</button>
+      </div>
+      <div id="history">
         <h3>Historial</h3>
         <ul id="historyList"></ul>
-    </div>
- 
-</body>
+      </div>
+  </body>
 </html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
+<script src="./script.js"></script>
 </body>
 </html>
