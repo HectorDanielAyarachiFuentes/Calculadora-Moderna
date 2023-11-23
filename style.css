@@ -156,3 +156,61 @@ h3 {
 #clearButton {
     width: 320px; /* Puedes ajustar el valor según tus preferencias */
 }
+
+/* Estilos para tabletas */
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    body {
+        margin: 20px;
+    }
+
+    #calculator {
+        max-width: 80%;
+    }
+
+    input[type="text"] {
+        font-size: 18px;
+    }
+
+    input[type="button"] {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+    #clearButton {
+        width: 60%;
+    }
+}
+
+/* Estilos para pantallas pequeñas (menos de 600px) */
+@media screen and (max-width: 599px) {
+    body {
+        margin: 10px;
+    }
+
+    #calculator {
+        max-width: 90%;
+        padding: 10px;
+    }
+
+    input[type="text"] {
+        font-size: 16px;
+    }
+
+    input[type="button"] {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    #historyList li {
+        font-size: 12px;
+    }
+
+    #clearButton {
+        width: 220px; /* Puedes ajustar el valor según tus preferencias */
+    }
+}
