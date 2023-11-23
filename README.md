@@ -1,8 +1,16 @@
 # Calculadora Moderna
 
+Bienvenido a la **Calculadora Moderna**, una herramienta avanzada diseñada para brindarte una experiencia de cálculo fluida y eficiente. Con un diseño moderno e intuitivo, esta calculadora se adapta a tus necesidades tanto en dispositivos de escritorio como en dispositivos móviles.
+
 ![Calculadora Completa](https://github.com/HectorDanielAyarachiFuentes/Calculadora-Moderna/blob/main/Fotos%20Readme/Calculadora-completa.png?raw=true)
 
-Bienvenido a la **Calculadora Moderna**, una herramienta avanzada diseñada para brindarte una experiencia de cálculo fluida y eficiente. Con un diseño moderno e intuitivo, esta calculadora se adapta a tus necesidades tanto en dispositivos de escritorio como en dispositivos móviles.
+
+
+* **Amplia gama de funciones matemáticas:** La calculadora cuenta con una amplia gama de funciones matemáticas, incluyendo operaciones básicas, funciones trigonométricas, funciones logarítmicas, etc.
+
+* **Botones para volver atrás y adelante:** La calculadora cuenta con botones para volver atrás y adelante en el historial de cálculos. Esto permite corregir errores o volver a calcular un resultado.
+
+* **Botón para borrar el historial:** La calculadora cuenta con un botón para borrar el historial de cálculos. Esto es útil cuando se desea comenzar de nuevo.
 
 ## Características Principales
 
