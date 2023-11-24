@@ -171,7 +171,6 @@ h3 {
 #calculateButton:hover {
     background-color: #4CAF50; /* Cambia a otro tono de verde */
     /* Agrega cualquier otra propiedad CSS para el efecto hover multicolor */
-    width:320px;
 
 }
 
@@ -221,6 +220,9 @@ h3 {
     #clearButton {
         width: 60%;
     }
+    #calculateButton {
+        width: 60%;
+    }
 }
 
 /* Estilos para pantallas pequeñas (menos de 600px) */
@@ -254,5 +256,11 @@ h3 {
 
     #clearButton {
         width: 220px; /* Puedes ajustar el valor según tus preferencias */
+    }
+    #calculateButton {
+        background-color: rgb(0, 128, 98);
+        color: white;
+        border: none;
+        width: 220px;
     }
 }
