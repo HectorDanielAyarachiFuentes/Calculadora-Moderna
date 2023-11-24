@@ -18,7 +18,11 @@ function addToDisplay(value) {
         display.value += value;
     }
 }
-
+// Función para borrar un dígito a la vez
+function deleteLastDigit() {
+    const display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
+}
 // Función auxiliar para verificar si un carácter es un operador
 function isOperator(char) {
     return ['+', '-', '*', '/'].includes(char);

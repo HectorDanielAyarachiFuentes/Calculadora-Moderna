@@ -30,12 +30,16 @@
       <input type="button" value="0" onclick="addToDisplay('0')">
       <input type="button" value="." onclick="addToDisplay('.')">
       <input type="button" class="operator" value="/" onclick="addToDisplay('/')">
-      <input type="button" class="operator calculate-animation" value="=" onclick="calculate()">
+      <input type="button" class="operator" value="⌫" onclick="deleteLastDigit()">
+
+      <input type="button" id="calculateButton" class="operator calculate-animation" value="="  onclick="calculate()">
       <input type="button" class="operator" id="clearButton" value="C" onclick="clearDisplay()">
+
       <div>
         <button onclick="goBack()">Atrás</button>
         <button onclick="goForward()">Adelante</button>
         <button onclick="clearHistoryButton()">Borrar Historial</button>
+
       </div>
       <div id="history">
         <h3>Historial</h3>
