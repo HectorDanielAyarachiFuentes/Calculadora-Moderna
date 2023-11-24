@@ -1,22 +1,56 @@
 // Funciones de la calculadora
-        function addToDisplay(value) {
-            document.getElementById('display').value += value;
-        }
-        function calculate() {
-            try {
-                const expression = document.getElementById('display').value;
-                const result = eval(expression);
-                document.getElementById('display').value = result;
-                animateDisplay();
-                // Guardar historial y datos en Local Storage
-                saveToLocalStorage(expression, result);
-            } catch (error) {
-                document.getElementById('display').value = 'Error';
-            }
-        }
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-        }
+function addToDisplay(value) {
+    const display = document.getElementById('display');
+    const currentValue = display.value;
+
+    // Verificar si el último carácter es un operador
+    const lastCharIsOperator = isOperator(currentValue.charAt(currentValue.length - 1));
+
+    // Verificar si el valor que se está agregando es un operador
+    const newValueIsOperator = isOperator(value);
+
+    // Mostrar solo un signo si el último carácter también es un operador
+    if (lastCharIsOperator && newValueIsOperator) {
+        // Reemplazar el último operador con el nuevo
+        display.value = currentValue.slice(0, -1) + value;
+    } else {
+        // Agregar el valor normalmente
+        display.value += value;
+    }
+}
+
+// Función auxiliar para verificar si un carácter es un operador
+function isOperator(char) {
+    return ['+', '-', '*', '/'].includes(char);
+}
+
+function calculate() {
+    try {
+        const expression = document.getElementById('display').value;
+        const result = eval(expression);
+        document.getElementById('display').value = result;
+        animateDisplay();
+        // Guardar historial y datos en Local Storage
+        saveToLocalStorage(expression, result);
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+    }
+}
+
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
+
+// Función para animar el display (debes implementarla)
+function animateDisplay() {
+    // Implementa la lógica de animación si es necesario
+}
+
+// Función para guardar en el Local Storage (debes implementarla)
+function saveToLocalStorage(expression, result) {
+    // Implementa la lógica de guardado en el Local Storage si es necesario
+}
+
         // Funciones del historial
         let history = [];
         let currentIndex = -1;
@@ -77,6 +111,7 @@
                 displayHistory();
             }
         };
+        
         // Borra el historial desde Local Storage al cargar la página
     function clearHistory() {
         history = [];
