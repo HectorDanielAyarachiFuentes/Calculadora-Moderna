@@ -135,6 +135,9 @@ button:hover {
     background-color: #007bff;
     color: #fff;
 }
+
+
+
 /* Estilos para la lista de historial */
 #history {
     margin-top: 20px;
@@ -177,7 +180,7 @@ h3 {
 
 /* Estilo básico para el nuevo botón de borrado de un dígito */
 #deleteButton {
-    background-color: #f44336; /* Rojo */
+    background-color: #36f436; /* Rojo */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -185,13 +188,27 @@ h3 {
 }
 
 #deleteButton:hover {
-    background-color: #d32f2f; /* Cambia a otro tono de rojo al pasar el mouse sobre el botón */
+    background-color: #fd6464; /* Cambia a otro tono de rojo al pasar el mouse sobre el botón */
 }
 
 
 
 
+#clear {
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: #ff0000;
 
+}
+
+#clear:hover {
+    background-color: #b72525b3;
+    color: #fff;
+}
 
 
 
