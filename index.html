@@ -46,7 +46,97 @@
         <ul id="historyList"></ul>
       </div>
   </body>
-</html>
+  <script>
+    function cambiarTrack(track) {
+       var value =  track.getAttribute("value")
+       viejo_audio = document.getElementById("reproductor")
+       audio_padre = viejo_audio.parentNode
+       audio_padre.removeChild(viejo_audio)
+       nuevo_audio = document.createElement("audio")
+       nuevo_audio.setAttribute("id","reproductor")
+       nuevo_audio.setAttribute("controls", "controls")
+      // nuevo_audio.setAttribute("autoplay", "autoplay")
+       source = document.createElement("source")
+       source.setAttribute("src", value)
+       source.setAttribute("type", "audio/mpeg")
+       source.setAttribute("id", "reproductorSource")
+       nuevo_audio.appendChild(source)
+       audio_padre.appendChild(nuevo_audio)}
+    function cargarReproductor() {
+             var select = document.getElementById("selectTrack")
+             var value = select.options[0].getAttribute("value")
+       nuevo_audio = document.createElement("audio")
+       nuevo_audio.setAttribute("id","reproductor")
+       nuevo_audio.setAttribute("controls", "controls")       
+       source = document.createElement("source")
+       source.setAttribute("src", value)
+       source.setAttribute("type", "audio/mpeg")
+       source.setAttribute("id", "reproductorSource")
+       nuevo_audio.appendChild(source)
+       padre = document.getElementById("reproductorBox")
+       padre.appendChild(nuevo_audio)
+    }
+    </script>
+    <div id="reproductorBox"></div>
+    <select id = "selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
+    <option value="Musica\NeYo  Because Of You Official Music Video.mp3">Ne-Yo- Because Of You</option>
+    <option value="Musica\Hey Good Lookin.mp3">Hank Williams
+      - Hey, Good Lookin'</option>
+    <option value="Musica\The Isley Brothers  Between the Sheets.mp3">The Isley Brotherss - Between the Sheets </option>
+    </select>
+    <script>cargarReproductor();</script>
+    
+    
+    <style>
+    #reproductorBox {
+        margin-top: 20px;
+    }
+    
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #3498db;
+        border-radius: 5px;
+        background-color: #ecf0f1;
+        color: #2c3e50;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    
+    select option:checked {
+        background-color: #3498db;
+        color: white;
+    }
+    
+    select option:hover {
+        background-color: #2980b9;
+        color: white;
+    }
+    
+    audio {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    /* Rainbow effect for hover (may not be universally supported) */
+    @keyframes rainbow {
+        0% { color: #ff0000; }
+        16% { color: #ff9900; }
+        33% { color: #ffff00; }
+        50% { color: #33cc33; }
+        66% { color: #3399ff; }
+        83% { color: #cc66ff; }
+        100% { color: #ff0000; }
+    }
+    
+    select option:hover {
+        background-color: #2980b9;
+        color: white;
+        animation: rainbow 1s infinite;
+    }
+    </style>
+    
 <script src="./script.js"></script>
 </body>
 </html>
