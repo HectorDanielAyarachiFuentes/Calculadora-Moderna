@@ -2,8 +2,7 @@ body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             margin: 50px;
-            background-color: #f8f8f8;
-        }
+            background-image: linear-gradient(90deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), linear-gradient(0deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), repeating-linear-gradient(0deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px), repeating-linear-gradient(90deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px),linear-gradient(white, white);        }
         h2 {
             color: #333;
         }
