@@ -252,7 +252,7 @@ h3 {
     }
 }
 
-/* Estilos para pantallas pequeñas (menos de 600px) */
+/* Estilos para pantallas pequeñas (menos de 600px)  */
 @media screen and (max-width: 599px) {
     body {
         margin: 10px;
