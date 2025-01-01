@@ -1,181 +1,201 @@
+/* Estilos generales */
 body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            margin: 50px;
-            background-image: linear-gradient(90deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), linear-gradient(0deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), repeating-linear-gradient(0deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px), repeating-linear-gradient(90deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px),linear-gradient(white, white);        }
-        h2 {
-            color: #333;
-        }
-        #calculator {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            transition: box-shadow 0.3s ease-in-out;
-            animation: fadeIn 1s ease-in-out;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            font-size: 24px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        input[type="button"] {
-            width: 60px;
-            height: 60px;
-            font-size: 20px;
-            margin: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #eee;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s ease-in-out;
-            animation: keyPress 0.5s ease-in-out;
-        }
-        input[type="button"]:hover {
-            background-color: #ddd;
-        }
-        input[type="button"].operator {
-            background-color: rgb(56, 56, 219);
-            color: #fff;
-        }
-        input[type="button"].operator:hover {
-            background-color: rgb(102, 115, 255);
-        }
-        input[type="text"]:focus {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-        input[type="button"]:active {
-            transform: scale(0.95);
-        }
-        input[type="button"]::after {
-            content: '\1F3B5'; /* Emoji musical note */
-            font-size: 24px;
-            margin-left: 5px;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-        }
-        input[type="button"]:active::after {
-            opacity: 1;
-        }
-        .calculate-animation {
-            animation: calculateAnimation 0.5s;
-        }
-        @keyframes calculateAnimation {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        @keyframes keyPress {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-/* ... (estilos existentes) ... */
-        #history {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f4f4f4;
-        }
-        #history ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        #history ul li {
-            margin-bottom: 5px;
-        }
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    background-image: linear-gradient(90deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), linear-gradient(0deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), repeating-linear-gradient(0deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px), repeating-linear-gradient(90deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px),linear-gradient(white, white);        
+}
+
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-/* Estilos para los botones */
-button {
-    padding: 10px 15px;
-    margin: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+
+h2 {
+    color: #333;
 }
-button:hover {
-    background-color: #007bff;
+
+#calculator {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+input[type="button"] {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    animation: keyPress 0.5s ease-in-out;
+}
+
+input[type="button"]:hover {
+    background-color: #ddd;
+}
+
+input[type="button"].operator {
+    background-color: rgb(56, 56, 219);
     color: #fff;
 }
 
+input[type="button"].operator:hover {
+    background-color: rgb(102, 115, 255);
+}
 
+input[type="text"]:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 
-/* Estilos para la lista de historial */
+input[type="button"]:active {
+    transform: scale(0.95);
+}
+
+input[type="button"]::after {
+    content: '\1F3B5'; /* Emoji musical note */
+    font-size: 24px;
+    margin-left: 5px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+input[type="button"]:active::after {
+    opacity: 1;
+}
+
+.calculate-animation {
+    animation: calculateAnimation 0.5s;
+}
+
+@keyframes calculateAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes keyPress {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ... (estilos existentes) ... */
 #history {
     margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f4f4f4;
 }
+
+#history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#history ul li {
+    margin-bottom: 5px;
+}
+
+/* Botones */
+button {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005f4b;
+}
+
+/* Títulos */
 h3 {
     font-size: 18px;
     margin-bottom: 10px;
 }
-#historyList {
-    list-style-type: none;
-    padding: 0;
-}
+
+/* Lista de historial */
 #historyList li {
-    margin-bottom: 8px;
     font-size: 14px;
+    margin-bottom: 5px;
     color: #333;
 }
-/* Estilos adicionales según sea necesario */
+
+/* Botón de limpiar */
 #clearButton {
-    width: 320px; /* Puedes ajustar el valor según tus preferencias */
-    color: whitesmoke;
-    background-color: #ff0000ed;
+    width: 100%;
+    background-color: #ff4d4d;
+    color: white;
+    margin-bottom: 10px;
 }
 
+#clearButton:hover {
+    background-color: #cc0000;
+}
 
-/*Boton igual*/
+/* Botón de calcular */
 #calculateButton {
     background-color: rgb(0, 128, 98);
     color: white;
     border: none;
-    width: 320px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 #calculateButton:hover {
-    background-color: #4CAF50; /* Cambia a otro tono de verde */
-    /* Agrega cualquier otra propiedad CSS para el efecto hover multicolor */
-
+    background-color: #005f4b;
 }
-
 
 /* Estilo básico para el nuevo botón de borrado de un dígito */
 #deleteButton {
@@ -190,9 +210,6 @@ h3 {
     background-color: #fd6464; /* Cambia a otro tono de rojo al pasar el mouse sobre el botón */
 }
 
-
-
-
 #clear {
     margin: 5px;
     font-size: 16px;
@@ -201,18 +218,12 @@ h3 {
     border-radius: 5px;
     transition: background-color 0.3s ease;
     background-color: #ff0000;
-
 }
 
 #clear:hover {
     background-color: #b72525b3;
     color: #fff;
 }
-
-
-
-
-
 
 /* Estilos para tabletas */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
@@ -278,5 +289,25 @@ h3 {
         color: white;
         border: none;
         width: 220px;
+    }
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    button {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    #historyList li {
+        font-size: 12px;
     }
 }
