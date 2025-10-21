@@ -107,8 +107,19 @@ function displayHistory() {
     history.forEach((entry, index) => {
         const listItem = document.createElement('li');
         listItem.textContent = `${entry.expression} = ${entry.result}`;
+        listItem.dataset.index = index; // Store the index of the history item
+        listItem.classList.add('history-item'); // Add a class for styling
+        listItem.addEventListener('click', () => {
+            selectHistoryItem(index);
+        });
         historyList.appendChild(listItem);
     });
+}
+
+function selectHistoryItem(index) {
+    currentIndex = index;
+    loadFromHistory();
+    showTab('calculator-tab'); // Switch to calculator tab for convenience
 }
 
 function updateLocalStorage() {
