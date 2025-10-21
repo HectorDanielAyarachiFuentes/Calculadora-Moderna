@@ -207,6 +207,23 @@ h2 {
     background-color: var(--button-hover-bg); /* Use a consistent hover background */
 }
 
+/* Estilos para el contenido del item del historial */
+.history-item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.history-item-calculation {
+    font-weight: bold;
+}
+
+.history-item-timestamp {
+    font-size: 0.8em;
+    color: #6c757d; /* A more subtle color for the timestamp */
+}
+
 /* Estilos para el botón de borrar elemento del historial */
 .delete-history-item-btn {
     background-color: #dc3545; /* Red color for delete */

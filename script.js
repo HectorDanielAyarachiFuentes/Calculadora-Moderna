@@ -77,7 +77,8 @@ function saveToHistory(expression, result) {
     if (currentIndex < history.length - 1) {
         history = history.slice(0, currentIndex + 1);
     }
-    history.push({ expression, result });
+    const timestamp = new Date().toISOString();
+    history.push({ expression, result, timestamp });
     currentIndex = history.length - 1;
     updateLocalStorage();
 }
@@ -106,10 +107,25 @@ function displayHistory() {
     historyList.innerHTML = '';
     history.forEach((entry, index) => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${entry.expression} = ${entry.result}`;
         listItem.dataset.index = index; // Store the index of the history item
         listItem.classList.add('history-item'); // Add a class for styling
         
+        // Create a container for the main content (calculation + timestamp)
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('history-item-content');
+
+        const calculationSpan = document.createElement('span');
+        calculationSpan.textContent = `${entry.expression} = ${entry.result}`;
+        calculationSpan.classList.add('history-item-calculation');
+
+        const timestampSpan = document.createElement('span');
+        const date = new Date(entry.timestamp);
+        timestampSpan.textContent = date.toLocaleString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+        timestampSpan.classList.add('history-item-timestamp');
+
+        contentDiv.appendChild(calculationSpan);
+        contentDiv.appendChild(timestampSpan);
+
         // Add click listener for selecting the item
         listItem.addEventListener('click', (event) => {
             // Prevent the delete button click from triggering the select
@@ -128,6 +144,7 @@ function displayHistory() {
             deleteHistoryItem(index);
         });
 
+        listItem.appendChild(contentDiv);
         listItem.appendChild(deleteButton);
         historyList.appendChild(listItem);
     });
