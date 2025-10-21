@@ -23,15 +23,16 @@
 /* Estilos generales */
 body {
     font-family: 'Arial', sans-serif;
-    margin: 20px;
-    padding: 20px;
+    margin: 0;
+    padding: 0; /* Removed padding to maximize available space */
     box-sizing: border-box;
     background-color: var(--body-bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid; /* Changed to grid for better adaptability */
+    place-items: center; /* Centers content both horizontally and vertically */
+    height: 100vh; /* Use fixed height to prevent body scrolling */
+    overflow: hidden; /* Prevent any scroll on the body */
     color: var(--text-color); /* Moved here for better inheritance */
-    gap: 30px;
+    /* gap: 30px; Removed as place-items handles centering a single child */
 }
 
 .container {
@@ -48,11 +49,12 @@ h2 {
 }
 
 #calculator, #history-container, #music-player-container { /* Apply common styles to all main sections */
-    max-width: 380px;
-    margin: 0; /* Remove auto margin as it's now within a tab content */
+    width: 100%; /* Allow to fill available width */
+    max-width: 380px; /* Keep max-width for larger screens */
     background-color: var(--container-bg);
+    height: 100%; /* Allow to fill available height from tab-content */
     border-radius: 8px;
-    padding: 20px;
+    padding: 15px; /* Reduced padding to save space */
     box-shadow: 0 0 10px var(--container-shadow); /* Slightly less shadow for tab content */
     transition: box-shadow 0.3s ease-in-out;
     animation: fadeIn 1s ease-in-out;
@@ -81,17 +83,21 @@ h2 {
 #keypad {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr); /* Make rows flexible to adapt height */
     gap: 10px;
+    height: 100%; /* Ensure keypad fills its parent's height */
 }
 
 #keypad button {
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px); /* Responsive font size */
     border: 1px solid var(--button-border);
     border-radius: 8px;
     background-color: var(--button-bg);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s ease-in-out;
-    padding: 20px;
+    padding: 0; /* Remove fixed padding to allow height: 100% to work */
+    display: flex; /* Use flexbox to center content vertically and horizontally */
+    align-items: center; justify-content: center;
 }
 
 #keypad button:hover {
@@ -112,7 +118,7 @@ h2 {
 }
 
 #calculateButton {
-    grid-row: span 2;
+    grid-row: span 2; /* This should still work, spanning 2 flexible rows */
 }
 
 #zero-btn {
@@ -272,8 +278,8 @@ h2 {
 /* Media Queries */
 @media screen and (max-width: 420px) {
     body {
-        margin: 0;
-        padding: 10px;
+        margin: 0; /* Keep margin 0 */
+        padding: 0; /* Remove padding to use full screen height */
     }
 
     #calculator, #history-container, #music-player-container {
