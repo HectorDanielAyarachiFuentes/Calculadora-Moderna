@@ -109,17 +109,71 @@ function displayHistory() {
         listItem.textContent = `${entry.expression} = ${entry.result}`;
         listItem.dataset.index = index; // Store the index of the history item
         listItem.classList.add('history-item'); // Add a class for styling
-        listItem.addEventListener('click', () => {
-            selectHistoryItem(index);
+        
+        // Add click listener for selecting the item
+        listItem.addEventListener('click', (event) => {
+            // Prevent the delete button click from triggering the select
+            if (!event.target.classList.contains('delete-history-item-btn')) {
+                selectHistoryItem(index);
+            }
         });
+
+        // Create a delete button for each history item
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'x'; // Or '🗑️'
+        deleteButton.classList.add('delete-history-item-btn');
+        deleteButton.setAttribute('aria-label', `Borrar cálculo ${entry.expression} = ${entry.result}`);
+        deleteButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the parent li's click event from firing
+            deleteHistoryItem(index);
+        });
+
+        listItem.appendChild(deleteButton);
         historyList.appendChild(listItem);
     });
 }
 
 function selectHistoryItem(index) {
+    // Only load if the index is valid and not already the current one
+    if (index !== currentIndex && index >= 0 && index < history.length) {
+            selectHistoryItem(index);
+    }
     currentIndex = index;
     loadFromHistory();
     showTab('calculator-tab'); // Switch to calculator tab for convenience
+}
+
+function deleteHistoryItem(indexToDelete) {
+    if (indexToDelete < 0 || indexToDelete >= history.length) {
+        return; // Invalid index
+    }
+
+    const confirmation = confirm(`¿Estás seguro de que quieres borrar "${history[indexToDelete].expression} = ${history[indexToDelete].result}" del historial?`);
+    if (!confirmation) {
+        return;
+    }
+
+    history.splice(indexToDelete, 1);
+
+    // Adjust currentIndex after deletion
+    if (currentIndex >= indexToDelete) {
+        currentIndex = Math.max(-1, currentIndex - 1);
+    }
+
+    updateLocalStorage();
+    // If history is now empty, clear the display
+    if (history.length === 0) {
+        clearDisplay();
+    } else if (currentIndex !== -1) {
+        // If there's still history and a valid currentIndex, load it
+        loadFromHistory();
+    } else {
+        // If history is not empty but currentIndex is -1 (e.g., deleted the last item)
+        // This case might happen if the last item was deleted and currentIndex became -1.
+        // We might want to clear the display or load the new last item.
+        // For now, clear display if currentIndex is -1.
+        clearDisplay();
+    }
 }
 
 function updateLocalStorage() {

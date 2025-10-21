@@ -194,14 +194,37 @@ h2 {
 }
 
 /* Estilos para los elementos del historial clicables */
-#history ul li.history-item {
+#history ul li.history-item { /* Make sure this is more specific than general li */
     cursor: pointer;
     padding: 8px 10px; /* Add some padding for better click area */
     border-bottom: 1px solid var(--history-border);
+    display: flex; /* Use flexbox to align text and button */
+    justify-content: space-between; /* Space out text and button */
+    align-items: center; /* Vertically align items */
 }
 
 #history ul li.history-item:hover {
     background-color: var(--button-hover-bg); /* Use a consistent hover background */
+}
+
+/* Estilos para el botón de borrar elemento del historial */
+.delete-history-item-btn {
+    background-color: #dc3545; /* Red color for delete */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it round */
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px; /* Space from the text */
+    flex-shrink: 0; /* Prevent button from shrinking */
+    transition: background-color 0.2s ease;
+}
+
+.delete-history-item-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
 
 /* Media Queries */
