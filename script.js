@@ -8,6 +8,7 @@ const historyControls = document.getElementById('history-controls');
 const selectTrack = document.getElementById('selectTrack');
 const reproductor = document.getElementById('reproductor');
 const themeToggleButton = document.getElementById('theme-toggle');
+const tabButtons = document.querySelectorAll('.tab-button');
 
 // =================================================================================
 // Calculator State
@@ -161,6 +162,28 @@ function loadTheme() {
 }
 
 // =================================================================================
+// Tab Functions
+// =================================================================================
+function showTab(tabId) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // Deactivate all tab buttons
+    tabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Show the selected tab content
+    document.getElementById(tabId).classList.add('active');
+
+    // Activate the corresponding tab button
+    document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active');
+}
+
+
+// =================================================================================
 // Event Listeners
 // =================================================================================
 keypad.addEventListener('click', (event) => {
@@ -190,6 +213,13 @@ historyControls.addEventListener('click', (event) => {
 
 selectTrack.addEventListener('change', changeTrack);
 
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.dataset.tab;
+        showTab(tabId);
+    });
+});
+
 themeToggleButton.addEventListener('click', toggleTheme);
 
 window.addEventListener('load', () => {
@@ -205,4 +235,7 @@ window.addEventListener('load', () => {
 
     loadInitialTrack();
     loadTheme();
+
+    // Show the first tab by default
+    showTab('calculator-tab');
 });

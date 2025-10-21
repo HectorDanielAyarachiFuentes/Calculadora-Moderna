@@ -21,55 +21,69 @@
     <link type="image/png" sizes="120x120" rel="icon"href="calculadora-alegre-hector-ayarachi.png">
   </head>
   <body>
-    <div id="calculator">
-      <div class="calculator-header">
-        <h2>Calculadora Moderna</h2>
-        <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="calculator-tab">Calculadora</button>
+        <button class="tab-button" data-tab="history-tab">Historial</button>
+        <button class="tab-button" data-tab="music-tab">Música</button>
       </div>
-      <input type="text" id="display" readonly placeholder="0">
-      <div id="keypad">
-        <button class="operator" data-action="clear">C</button>
-        <button class="operator" data-action="backspace" aria-label="Borrar último dígito">⌫</button>
-        <button class="operator" data-value="/">/</button>
-        <button class="operator" data-value="*">*</button>
-        <button data-value="7">7</button>
-        <button data-value="8">8</button>
-        <button data-value="9">9</button>
-        <button class="operator" data-value="-">-</button>
-        <button data-value="4">4</button>
-        <button data-value="5">5</button>
-        <button data-value="6">6</button>
-        <button class="operator" data-value="+">+</button>
-        <button data-value="1">1</button>
-        <button data-value="2">2</button>
-        <button data-value="3">3</button>
-        <button id="calculateButton" class="operator" data-action="calculate">=</button>
-        <button id="zero-btn" data-value="0">0</button>
-        <button data-value=".">.</button>
-      </div>
-    </div>
 
-    <div id="history-container">
-      <h3>Historial</h3>
-      <div id="history-controls">
-        <button data-action="history-back">Atrás</button>
-        <button data-action="history-forward">Adelante</button>
-        <button data-action="history-clear">Borrar Historial</button>
+      <div id="calculator-tab" class="tab-content active">
+        <div id="calculator">
+          <div class="calculator-header">
+            <h2>Calculadora Moderna</h2>
+            <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+          </div>
+          <input type="text" id="display" readonly placeholder="0">
+          <div id="keypad">
+            <button class="operator" data-action="clear">C</button>
+            <button class="operator" data-action="backspace" aria-label="Borrar último dígito">⌫</button>
+            <button class="operator" data-value="/">/</button>
+            <button class="operator" data-value="*">*</button>
+            <button data-value="7">7</button>
+            <button data-value="8">8</button>
+            <button data-value="9">9</button>
+            <button class="operator" data-value="-">-</button>
+            <button data-value="4">4</button>
+            <button data-value="5">5</button>
+            <button data-value="6">6</button>
+            <button class="operator" data-value="+">+</button>
+            <button data-value="1">1</button>
+            <button data-value="2">2</button>
+            <button data-value="3">3</button>
+            <button id="calculateButton" class="operator" data-action="calculate">=</button>
+            <button id="zero-btn" data-value="0">0</button>
+            <button data-value=".">.</button>
+          </div>
+        </div>
       </div>
-      <div id="history">
-        <ul id="historyList"></ul>
-      </div>
-    </div>
 
-    <div id="music-player-container">
-      <h3>Reproductor de Música</h3>
-      <select id="selectTrack" multiple>
-        <option value="Musica/NeYo  Because Of You Official Music Video.mp3">Ne-Yo - Because Of You</option>
-        <option value="Musica/Hey Good Lookin.mp3">Hank Williams - Hey, Good Lookin'</option>
-        <option value="Musica/The Isley Brothers  Between the Sheets.mp3">The Isley Brothers - Between the Sheets</option>
-      </select>
-      <div id="reproductorBox">
-        <audio id="reproductor" controls></audio>
+      <div id="history-tab" class="tab-content">
+        <div id="history-container">
+          <h3>Historial</h3>
+          <div id="history-controls">
+            <button data-action="history-back">Atrás</button>
+            <button data-action="history-forward">Adelante</button>
+            <button data-action="history-clear">Borrar Historial</button>
+          </div>
+          <div id="history">
+            <ul id="historyList"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="music-tab" class="tab-content">
+        <div id="music-player-container">
+          <h3>Reproductor de Música</h3>
+          <select id="selectTrack" multiple>
+            <option value="Musica/NeYo  Because Of You Official Music Video.mp3">Ne-Yo - Because Of You</option>
+            <option value="Musica/Hey Good Lookin.mp3">Hank Williams - Hey, Good Lookin'</option>
+            <option value="Musica/The Isley Brothers  Between the Sheets.mp3">The Isley Brothers - Between the Sheets</option>
+          </select>
+          <div id="reproductorBox">
+            <audio id="reproductor" controls></audio>
+          </div>
+        </div>
       </div>
     </div>
     

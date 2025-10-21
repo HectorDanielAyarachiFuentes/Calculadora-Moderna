@@ -27,10 +27,10 @@ body {
     padding: 20px;
     box-sizing: border-box;
     background-color: var(--body-bg);
-    color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--text-color); /* Moved here for better inheritance */
     gap: 30px;
 }
 
@@ -47,13 +47,13 @@ h2 {
     color: var(--text-color);
 }
 
-#calculator {
+#calculator, #history-container, #music-player-container { /* Apply common styles to all main sections */
     max-width: 380px;
-    margin: 0 auto;
+    margin: 0; /* Remove auto margin as it's now within a tab content */
     background-color: var(--container-bg);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 0 15px var(--container-shadow);
+    box-shadow: 0 0 10px var(--container-shadow); /* Slightly less shadow for tab content */
     transition: box-shadow 0.3s ease-in-out;
     animation: fadeIn 1s ease-in-out;
 }
@@ -144,16 +144,6 @@ h2 {
     }
 }
 
-/* History Section */
-#history-container {
-    max-width: 380px;
-    width: 100%;
-    background-color: var(--container-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px var(--container-shadow);
-}
-
 #history {
     max-height: 150px;
     overflow-y: auto;
@@ -201,16 +191,6 @@ h2 {
 
 #history-controls button[data-action="history-clear"]:hover {
     background-color: #c82333;
-}
-
-/* Music Player */
-#music-player-container {
-    max-width: 380px;
-    width: 100%;
-    background-color: var(--container-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px var(--container-shadow);
 }
 
 /* Media Queries */
@@ -324,4 +304,57 @@ body.dark-theme {
     --history-border: #444;
     --theme-toggle-bg: #333;
     --theme-toggle-hover-bg: #444;
+}
+
+/* Estilos para las pestañas */
+.tab-container {
+    width: 100%;
+    max-width: 420px; /* Adjust max-width to accommodate tabs */
+    background-color: var(--container-bg);
+    border-radius: 8px;
+    box-shadow: 0 0 15px var(--container-shadow);
+    padding: 10px; /* Padding for the whole tab container */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--button-border);
+    padding-bottom: 5px;
+}
+
+.tab-button {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background-color: var(--button-hover-bg);
+    border-radius: 5px;
+}
+
+.tab-button.active {
+    color: var(--operator-bg); /* Active tab color */
+    border-bottom: 3px solid var(--operator-bg);
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none; /* Hidden by default */
+    padding: 0; /* Remove padding from tab content as inner elements have it */
+}
+
+.tab-content.active {
+    display: block; /* Show active tab content */
 }
