@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="Dulce">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://hectordanielayarachifuentes.github.io/Calculadora-Moderna/">
     <meta property="og:title" content="Calculadora Moderna">
     <meta property="og:description" content="Una calculadora moderna y funcional para tus cálculos diarios.">
@@ -22,82 +22,56 @@
   </head>
   <body>
     <div id="calculator">
-      <h2>Calculadora Moderna</h2>
-      <input type="text" name="display" id="display" readonly placeholder="Pon un número">
-      <br>
-      <input type="button" value="1" onclick="addToDisplay('1')">
-      <input type="button" value="2" onclick="addToDisplay('2')">
-      <input type="button" value="3" onclick="addToDisplay('3')">
-      <input type="button" class="operator" value="*" onclick="addToDisplay('*')">
-      <br>
-      <input type="button" value="4" onclick="addToDisplay('4')">
-      <input type="button" value="5" onclick="addToDisplay('5')">
-      <input type="button" value="6" onclick="addToDisplay('6')">
-      <input type="button" class="operator" value="-" onclick="addToDisplay('-')">
-      <br>
-      <input type="button" value="7" onclick="addToDisplay('7')">
-      <input type="button" value="8" onclick="addToDisplay('8')">
-      <input type="button" value="9" onclick="addToDisplay('9')">
-      <input type="button" class="operator" value="+" onclick="addToDisplay('+')">
-      <br>
-      <input type="button" value="0" onclick="addToDisplay('0')">
-      <input type="button" value="." onclick="addToDisplay('.')">
-      <input type="button" class="operator" value="/" onclick="addToDisplay('/')">
-      <input type="button" class="operator" id="clear"value="⌫" onclick="deleteLastDigit()">
+      <div class="calculator-header">
+        <h2>Calculadora Moderna</h2>
+        <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+      </div>
+      <input type="text" id="display" readonly placeholder="0">
+      <div id="keypad">
+        <button class="operator" data-action="clear">C</button>
+        <button class="operator" data-action="backspace" aria-label="Borrar último dígito">⌫</button>
+        <button class="operator" data-value="/">/</button>
+        <button class="operator" data-value="*">*</button>
+        <button data-value="7">7</button>
+        <button data-value="8">8</button>
+        <button data-value="9">9</button>
+        <button class="operator" data-value="-">-</button>
+        <button data-value="4">4</button>
+        <button data-value="5">5</button>
+        <button data-value="6">6</button>
+        <button class="operator" data-value="+">+</button>
+        <button data-value="1">1</button>
+        <button data-value="2">2</button>
+        <button data-value="3">3</button>
+        <button id="calculateButton" class="operator" data-action="calculate">=</button>
+        <button id="zero-btn" data-value="0">0</button>
+        <button data-value=".">.</button>
+      </div>
+    </div>
 
-      <input type="button" id="calculateButton" class="operator calculate-animation" value="="  onclick="calculate()">
-      <input type="button" class="operator" id="clearButton" value="C" onclick="clearDisplay()">
-
-      <div>
-        <button onclick="goBack()">Atrás</button>
-        <button onclick="goForward()">Adelante</button>
-        <button onclick="clearHistoryButton()">Borrar Historial</button>
-
+    <div id="history-container">
+      <h3>Historial</h3>
+      <div id="history-controls">
+        <button data-action="history-back">Atrás</button>
+        <button data-action="history-forward">Adelante</button>
+        <button data-action="history-clear">Borrar Historial</button>
       </div>
       <div id="history">
-        <h3>Historial</h3>
         <ul id="historyList"></ul>
       </div>
-  </body>
-  <script>
-    function cambiarTrack(track) {
-       var value =  track.getAttribute("value")
-       viejo_audio = document.getElementById("reproductor")
-       audio_padre = viejo_audio.parentNode
-       audio_padre.removeChild(viejo_audio)
-       nuevo_audio = document.createElement("audio")
-       nuevo_audio.setAttribute("id","reproductor")
-       nuevo_audio.setAttribute("controls", "controls")
-      // nuevo_audio.setAttribute("autoplay", "autoplay")
-       source = document.createElement("source")
-       source.setAttribute("src", value)
-       source.setAttribute("type", "audio/mpeg")
-       source.setAttribute("id", "reproductorSource")
-       nuevo_audio.appendChild(source)
-       audio_padre.appendChild(nuevo_audio)}
-    function cargarReproductor() {
-             var select = document.getElementById("selectTrack")
-             var value = select.options[0].getAttribute("value")
-       nuevo_audio = document.createElement("audio")
-       nuevo_audio.setAttribute("id","reproductor")
-       nuevo_audio.setAttribute("controls", "controls")       
-       source = document.createElement("source")
-       source.setAttribute("src", value)
-       source.setAttribute("type", "audio/mpeg")
-       source.setAttribute("id", "reproductorSource")
-       nuevo_audio.appendChild(source)
-       padre = document.getElementById("reproductorBox")
-       padre.appendChild(nuevo_audio)
-    }
-    </script>
-    <div id="reproductorBox"></div>
-    <select id = "selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
-    <option value="Musica\NeYo  Because Of You Official Music Video.mp3">Ne-Yo- Because Of You</option>
-    <option value="Musica\Hey Good Lookin.mp3">Hank Williams
-      - Hey, Good Lookin'</option>
-    <option value="Musica\The Isley Brothers  Between the Sheets.mp3">The Isley Brotherss - Between the Sheets </option>
-    </select>
-    <script>cargarReproductor();</script>
+    </div>
+
+    <div id="music-player-container">
+      <h3>Reproductor de Música</h3>
+      <select id="selectTrack" multiple>
+        <option value="Musica/NeYo  Because Of You Official Music Video.mp3">Ne-Yo - Because Of You</option>
+        <option value="Musica/Hey Good Lookin.mp3">Hank Williams - Hey, Good Lookin'</option>
+        <option value="Musica/The Isley Brothers  Between the Sheets.mp3">The Isley Brothers - Between the Sheets</option>
+      </select>
+      <div id="reproductorBox">
+        <audio id="reproductor" controls></audio>
+      </div>
+    </div>
     
     
     <style>
@@ -151,5 +125,6 @@
     </style>
     
 <script src="./script.js"></script>
+
 </body>
 </html>

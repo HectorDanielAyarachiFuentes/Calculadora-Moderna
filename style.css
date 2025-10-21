@@ -1,92 +1,122 @@
+/* Variables de Color (Tema Claro por defecto) */
+:root {
+    --body-bg: #f0f2f5;
+    --container-bg: #fff;
+    --container-shadow: rgba(0, 0, 0, 0.1);
+    --text-color: #333;
+    --display-bg: #e9ecef;
+    --display-border: #ccc;
+    --button-bg: #eee;
+    --button-hover-bg: #ddd;
+    --button-border: #ccc;
+    --operator-bg: rgb(56, 56, 219);
+    --operator-text: #fff;
+    --operator-hover-bg: rgb(102, 115, 255);
+    --calculate-bg: rgb(0, 128, 98);
+    --calculate-hover-bg: #005f4b;
+    --history-bg: #f4f4f4;
+    --history-border: #ccc;
+    --theme-toggle-bg: #e0e0e0;
+    --theme-toggle-hover-bg: #c7c7c7;
+}
+
 /* Estilos generales */
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 20px;
+    padding: 20px;
     box-sizing: border-box;
-    text-align: center;
-    background-image: linear-gradient(90deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), linear-gradient(0deg, rgb(65,195,168) calc(0% + 3px), transparent calc(0% + 3px), transparent calc(100% - 3px), rgb(65,195,168) calc(100% - 3px)), repeating-linear-gradient(0deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px), repeating-linear-gradient(90deg, rgb(65,195,168) 0px, rgb(65,195,168) 1px, transparent 1px, transparent 30px),linear-gradient(white, white);        
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--container-bg);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--container-shadow);
 }
 
 h2 {
-    color: #333;
+    color: var(--text-color);
 }
 
 #calculator {
-    max-width: 400px;
+    max-width: 380px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: var(--container-bg);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px var(--container-shadow);
     transition: box-shadow 0.3s ease-in-out;
     animation: fadeIn 1s ease-in-out;
 }
 
-input[type="text"] {
+/* Display */
+#display {
     width: 100%;
     padding: 15px;
     margin-bottom: 15px;
     font-size: 24px;
-    border: 1px solid #ccc;
+    text-align: right;
+    border: 1px solid var(--button-border);
     border-radius: 8px;
     box-sizing: border-box;
     transition: box-shadow 0.3s ease-in-out;
+    background-color: var(--display-bg);
+    color: var(--text-color);
 }
 
-input[type="button"] {
-    width: 60px;
-    height: 60px;
-    font-size: 20px;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #eee;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s ease-in-out;
-    animation: keyPress 0.5s ease-in-out;
-}
-
-input[type="button"]:hover {
-    background-color: #ddd;
-}
-
-input[type="button"].operator {
-    background-color: rgb(56, 56, 219);
-    color: #fff;
-}
-
-input[type="button"].operator:hover {
-    background-color: rgb(102, 115, 255);
-}
-
-input[type="text"]:focus {
+#display:focus {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-input[type="button"]:active {
+/* Keypad */
+#keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+#keypad button {
+    font-size: 20px;
+    border: 1px solid var(--button-border);
+    border-radius: 8px;
+    background-color: var(--button-bg);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    padding: 20px;
+}
+
+#keypad button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+#keypad button.operator {
+    background-color: var(--operator-bg);
+    color: var(--operator-text);
+}
+
+#keypad button.operator:hover {
+    background-color: rgb(102, 115, 255);
+}
+
+#keypad button:active {
     transform: scale(0.95);
 }
 
-input[type="button"]::after {
-    content: '\1F3B5'; /* Emoji musical note */
-    font-size: 24px;
-    margin-left: 5px;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
+#calculateButton {
+    grid-row: span 2;
 }
 
-input[type="button"]:active::after {
-    opacity: 1;
+#zero-btn {
+    grid-column: span 2;
 }
 
 .calculate-animation {
@@ -105,18 +135,6 @@ input[type="button"]:active::after {
     }
 }
 
-@keyframes keyPress {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -126,15 +144,24 @@ input[type="button"]:active::after {
     }
 }
 
-/* ... (estilos existentes) ... */
-#history {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
+/* History Section */
+#history-container {
+    max-width: 380px;
+    width: 100%;
+    background-color: var(--container-bg);
+    padding: 20px;
     border-radius: 8px;
-    background-color: #f4f4f4;
+    box-shadow: 0 0 10px var(--container-shadow);
 }
 
+#history {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border-top: 1px solid var(--history-border);
+    background-color: var(--history-bg);
+}
+ 
 #history ul {
     list-style-type: none;
     padding: 0;
@@ -144,170 +171,157 @@ input[type="button"]:active::after {
     margin-bottom: 5px;
 }
 
-/* Botones */
-button {
-    width: 100%;
-    height: 50px;
+/* History Controls */
+#history-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+#history-controls button {
+    flex-grow: 1;
+    padding: 10px;
     font-size: 16px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #005f4b;
-}
-
-/* Títulos */
-h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-/* Lista de historial */
-#historyList li {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-/* Botón de limpiar */
-#clearButton {
-    width: 100%;
-    background-color: #ff4d4d;
+    background-color: #007bff;
     color: white;
-    margin-bottom: 10px;
 }
 
-#clearButton:hover {
-    background-color: #cc0000;
+#history-controls button:hover {
+    background-color: #0056b3;
+}
+
+#history-controls button[data-action="history-clear"] {
+    background-color: #dc3545;
+}
+
+#history-controls button[data-action="history-clear"]:hover {
+    background-color: #c82333;
+}
+
+/* Music Player */
+#music-player-container {
+    max-width: 380px;
+    width: 100%;
+    background-color: var(--container-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--container-shadow);
+}
+
+/* Media Queries */
+@media screen and (max-width: 420px) {
+    body {
+        margin: 0;
+        padding: 10px;
+    }
+
+    #calculator, #history-container, #music-player-container {
+        width: 100%;
+        max-width: none;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    #keypad button {
+        padding: 15px;
+        font-size: 18px;
+    }
+}
+
+/* Estilos del reproductor (movidos desde HTML) */
+#reproductorBox {
+    margin-top: 20px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+select option:checked {
+    background-color: #3498db;
+    color: white;
+}
+
+select option:hover {
+    background-color: #2980b9;
+    color: white;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
 }
 
 /* Botón de calcular */
 #calculateButton {
-    background-color: rgb(0, 128, 98);
+    background-color: var(--calculate-bg);
     color: white;
-    border: none;
-    width: 100%;
-    margin-bottom: 10px;
 }
 
 #calculateButton:hover {
-    background-color: #005f4b;
+    background-color: var(--calculate-hover-bg);
 }
 
-/* Estilo básico para el nuevo botón de borrado de un dígito */
-#deleteButton {
-    background-color: #36f436; /* Rojo */
-    color: white;
-    border: none;
-    padding: 10px 20px;
+/* Estilos del botón de tema */
+.calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#theme-toggle {
+    background: var(--theme-toggle-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-#deleteButton:hover {
-    background-color: #fd6464; /* Cambia a otro tono de rojo al pasar el mouse sobre el botón */
+#theme-toggle:hover {
+    background: var(--theme-toggle-hover-bg);
 }
 
-#clear {
-    margin: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    background-color: #ff0000;
+#theme-toggle:active {
+    transform: scale(0.9);
 }
 
-#clear:hover {
-    background-color: #b72525b3;
-    color: #fff;
-}
-
-/* Estilos para tabletas */
-@media screen and (min-width: 600px) and (max-width: 1024px) {
-    body {
-        margin: 20px;
-    }
-
-    #calculator {
-        max-width: 80%;
-    }
-
-    input[type="text"] {
-        font-size: 18px;
-    }
-
-    input[type="button"] {
-        width: 50px;
-        height: 50px;
-        font-size: 16px;
-    }
-    #clearButton {
-        width: 60%;
-    }
-    #calculateButton {
-        width: 60%;
-    }
-}
-
-/* Estilos para pantallas pequeñas (menos de 600px)  */
-@media screen and (max-width: 599px) {
-    body {
-        margin: 10px;
-    }
-
-    #calculator {
-        max-width: 90%;
-        padding: 10px;
-    }
-
-    input[type="text"] {
-        font-size: 16px;
-    }
-
-    input[type="button"] {
-        width: 40px;
-        height: 40px;
-        font-size: 14px;
-    }
-
-    h3 {
-        font-size: 16px;
-    }
-
-    #historyList li {
-        font-size: 12px;
-    }
-
-    #clearButton {
-        width: 220px; /* Puedes ajustar el valor según tus preferencias */
-    }
-    #calculateButton {
-        background-color: rgb(0, 128, 98);
-        color: white;
-        border: none;
-        width: 220px;
-    }
-}
-
-/* Media queries para dispositivos móviles */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    button {
-        height: 45px;
-        font-size: 14px;
-    }
-
-    h3 {
-        font-size: 16px;
-    }
-
-    #historyList li {
-        font-size: 12px;
-    }
+/* Tema Oscuro */
+body.dark-theme {
+    --body-bg: #121212;
+    --container-bg: #1e1e1e;
+    --container-shadow: rgba(0, 0, 0, 0.5);
+    --text-color: #e0e0e0;
+    --display-bg: #2a2a2a;
+    --display-border: #444;
+    --button-bg: #333;
+    --button-hover-bg: #444;
+    --button-border: #555;
+    --operator-bg: #00529b;
+    --operator-hover-bg: #006acb;
+    --calculate-bg: #007a5e;
+    --calculate-hover-bg: #009d78;
+    --history-bg: #2a2a2a;
+    --history-border: #444;
+    --theme-toggle-bg: #333;
+    --theme-toggle-hover-bg: #444;
 }
